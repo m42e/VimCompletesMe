@@ -14,6 +14,10 @@ if !exists('g:vcm_s_tab_behavior')
   let g:vcm_s_tab_behavior = 0
 endif
 
+if !exists('g:vcm_tab_complete')
+  let g:vcm_tab_complete = ''
+endif
+
 if !exists('g:vcm_direction')
   let g:vcm_direction = 'n'
 endif
@@ -22,7 +26,7 @@ endif
 function! s:vim_completes_me(shift_tab)
   let dirs = ["\<c-p>", "\<c-n>"]
   let dir = g:vcm_direction =~? '[nf]'
-  let map = exists('b:vcm_tab_complete') ? b:vcm_tab_complete : ''
+  let map = exists('b:vcm_tab_complete') ? b:vcm_tab_complete : g:vcm_tab_complete
 
   if pumvisible()
     if a:shift_tab
